@@ -26,15 +26,13 @@ public class Bank{
         return clients;
     }
 
-    public void setMoney(int cash){
-        if (cash > client.getSum()) {
-            System.out.println("Извини, у тебя недостаточно денег.");
-            System.out.println("Средства на вашем счете: " + this.client.getSum());
-        }
-        else {
-            this.client.setSum(this.client.getSum() - cash);
+    public void setMoney(int sum){
+        if (sum > client.getSum()) {
+            System.out.println("Error, your money is not enough.");
+        }else {
+            this.client.setSum(this.client.getSum() - sum);
             try {
-                int total = client.getSum() - cash;
+                int total = client.getSum() - sum;
                 String query = "update clients set cash = '" + total + "' where client_id = " + client.getClientId();
                 statement = connection.createStatement();
                 statement.executeUpdate(query);
@@ -42,15 +40,13 @@ public class Bank{
             catch (Exception e){
                 System.out.println(e);
             }
-            System.out.println("Операция прошла успешно\n"+
-                    "Доступные средства на вашем счете: "+ client.getSum());
+            System.out.println("Done successfully");
         }
     }
 
-    public void getMoney(int cash)
-    {
+    public void getMoney(int sum){
         try {
-            int total = client.getSum() + cash;
+            int total = client.getSum() + sum;
             String query = "update clients set cash = '" + total + "' where client_id = " + client.getClientId();
             statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -58,17 +54,14 @@ public class Bank{
         catch (Exception e){
             System.out.println(e);
         }
-        this.client.setSum(this.client.getSum() + cash);
-        System.out.println("Операция прошла успешно\n"+
-                "Доступные средства на вашем счете: "+ client.getSum());
+        this.client.setSum(this.client.getSum() + sum);
+        System.out.println("Done successfully");
     }
 
-    public void printInfo()
-    {
-        System.out.println("Текущее состояние счёта");
-        System.out.println("Номер счета: "+ client.getCardNum());
-        System.out.println("Колчество средств на счёте: "+ client.getSum());
+    public void printInfo() {
+        System.out.println("Information about your account \n" +
+                "Card number: " + client.getCardNum()
+        + "\nSum in your card: "+ client.getSum());
     }
-
 }
 

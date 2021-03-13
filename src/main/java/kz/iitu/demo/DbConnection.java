@@ -1,7 +1,5 @@
 package kz.iitu.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.sql.*;
@@ -17,14 +15,14 @@ public class DbConnection implements AccountService{
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/bank",
-                    "postgres",
-                    "postgres");
+                    "jdbc:postgresql://localhost:5432/bankData",
+                    "postgre",
+                    "postgre");
             if (connection != null) {
-                System.out.println("Коннект успешен !!!");
+                System.out.println("Connected successfully");
             }
             else {
-                System.out.println("Коннект провал !!!");
+                System.out.println("Not connected");
             }
         }
         catch (Exception e){
@@ -48,8 +46,9 @@ public class DbConnection implements AccountService{
             bank.getClients().add(client);
         }
     }
+
     @PreDestroy
-    public void destroy() {
+    public void wrongOperation() {
         try {
             connection.close();
             if (connection != null) {
