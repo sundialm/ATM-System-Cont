@@ -1,46 +1,38 @@
 package kz.iitu.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Client {
-    private int client_id;
-    private int cash;
-    private String card_num;
+    private int clientId;
+    private int sum;
+    private String cardNum;
 
     public Client() {
+        
     }
 
     public Client(int client_id,  String card_num ,int cash ) {
-        this.client_id = client_id;
-        this.card_num = card_num;
-        this.cash = cash;
+        this.clientId = client_id;
+        this.cardNum = card_num;
+        this.sum = cash;
 
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getClientId() {
+        return clientId;
     }
 
-    public int getCash() {
-        return cash;
+    public int getSum() {
+        return sum;
     }
 
-    public String getCard_num() {
-        return card_num;
+    public String getCardNum() {
+        return cardNum;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
-    }
-
-    public void setCash(int cash) {
-        this.cash = cash;
-    }
-
-    public void setCard_num(String card_num) {
-        this.card_num = card_num;
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 }
 

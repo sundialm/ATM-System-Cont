@@ -13,11 +13,11 @@ public class DemoApplication {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.scan("com.example.demo");
         context.refresh();
-        AccountService bankService = context.getBean("Service", ATM.class);
+        AccountService bankService = context.getBean("Service", AtmSystem.class);
         Random rand = new Random();
 
         Client randomClient = bankService.getBank().getClients().get(rand.nextInt(bankService.getBank().getClients().size()));
-        bankService.createPin(randomClient);
+        bankService.getClient(randomClient);
         ((AnnotationConfigApplicationContext) context).close();
 
     }
