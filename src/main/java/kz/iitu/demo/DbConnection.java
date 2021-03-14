@@ -16,7 +16,7 @@ public class DbConnection implements AccountService{
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/bankData",
-                    "postgre",
+                    "postgres",
                     "postgre");
             if (connection != null) {
                 System.out.println("Connected successfully");
@@ -52,9 +52,9 @@ public class DbConnection implements AccountService{
         try {
             connection.close();
             if (connection != null) {
-                System.out.println("Соединение закрыто!!!");
+                System.out.println("Not connected");
             } else {
-                System.out.println("Что-то пошло не так!!!");
+                System.out.println("Smth is wrong");
             }
         } catch (Exception e) {
             System.out.println(e);
